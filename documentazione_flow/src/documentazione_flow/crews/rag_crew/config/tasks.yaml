@@ -1,66 +1,188 @@
-research_documentation_task:
+analyze_and_generate_questions_task:
   description: >
-    Research the following documentation template sections using the RAG tool to extract information from existing documentation:
+    PHASE 1: COMPREHENSIVE ANALYSIS AND TARGETED QUESTION GENERATION
     
-    1. Key Links (code repository, deployment pipeline, API docs, cloud account, etc.)
-    2. General Information (purpose, intended use, target users, KPIs, prohibited uses)
-    3. Risk Classification (High/Limited/Minimal risk according to EU AI Act)
-    4. Application Functionality (model capabilities, limitations, input/output requirements, system architecture)
-    5. Models and Datasets (integrated models and datasets with documentation links)
-    6. Deployment (infrastructure, environment details, integration with external systems)
-    7. Lifecycle Management (monitoring procedures, versioning, risk management)
-    8. Testing and Validation (accuracy, robustness, cybersecurity measures)
-    9. Human Oversight (human-in-the-loop mechanisms, override procedures)
-    10. Incident Management (troubleshooting, common issues, support contacts)
+    Your task is to systematically analyze the EU AI Act documentation template and use RAG search to identify
+    exactly what information is available versus what needs to be collected from the user.
     
-    For each section, use the search_rag tool to find relevant information. Document what information was found
-    and what information is missing and needs to be requested from the user.
+    For the application "{application_name}", perform the following systematic analysis:
+    
+    1. **RAG INFORMATION EXTRACTION** - Search for information in these specific areas:
+       - Architecture and technical specifications: "What is the system architecture? What technologies are used?"
+       - Models and algorithms: "What AI models are implemented? What datasets are used?"
+       - Deployment and infrastructure: "How is the system deployed? What cloud services are used?"
+       - Risk management: "What are the identified risks? What mitigation measures exist?"
+       - Testing and validation: "What testing has been performed? What are the accuracy metrics?"
+       - Human oversight: "What human oversight mechanisms exist? How are interventions handled?"
+       - Compliance measures: "What compliance measures are implemented? What standards are followed?"
+    
+    2. **DETAILED SECTION ANALYSIS** - For each major documentation section, identify:
+       - What specific information was found in RAG search
+       - What critical details are missing
+       - What user input is required
+    
+    3. **TARGETED QUESTION GENERATION** - Create specific, detailed questions for missing information:
+       
+       **Application Owner Details:**
+       - "What is the full name and contact details of the application owner?"
+       - "What department/organization owns this application?"
+       
+       **Technical Architecture:**
+       - "What specific cloud provider and services are used (Azure, AWS, GCP)?"
+       - "What are the exact model names and versions being used?"
+       - "What are the API endpoints and authentication methods?"
+       
+       **Compliance and Legal:**
+       - "What specific EU AI Act risk classification applies to this system?"
+       - "What prohibited uses have been identified for this system?"
+       - "What compliance standards and certifications are required?"
+       
+       **Operational Details:**
+       - "What are the specific KPIs and success metrics being tracked?"
+       - "What monitoring and alerting systems are in place?"
+       - "What is the incident response procedure?"
+       
+       **Risk Management:**
+       - "What specific risks have been identified and assessed?"
+       - "What risk mitigation measures are currently implemented?"
+       - "What testing and validation procedures are in place?"
+    
+    EXPECTED OUTPUT FORMAT:
+    ```
+    # RAG SEARCH ANALYSIS REPORT
+    
+    ## INFORMATION FOUND IN EXISTING DOCUMENTATION:
+    [Detailed summary of what was found for each section]
+    
+    ## CRITICAL INFORMATION GAPS IDENTIFIED:
+    [List of missing information organized by documentation section]
+    
+    ## TARGETED QUESTIONS FOR USER INPUT:
+    [Organized list of specific questions grouped by documentation section]
+    
+    ## RECOMMENDED INFORMATION COLLECTION STRATEGY:
+    [Priority order for collecting missing information]
+    ```
     
     Application name: {application_name}
     
   expected_output: >
-    A comprehensive research report with:
-    - Information found for each documentation section from RAG search
-    - Clear identification of missing information that needs user input
-    - Structured findings organized by documentation template sections
-    - Specific questions to ask the user for missing information
-  agent: documentation_researcher
+    A comprehensive analysis report containing:
+    - Complete RAG search results organized by documentation section
+    - Detailed identification of information gaps
+    - Targeted, specific questions for user input organized by priority
+    - Clear mapping between questions and documentation template sections
+    - Strategic approach for information collection
+  agent: documentation_question_generator
 
-generate_documentation_task:
+compile_complete_documentation_task:
   description: >
-    Based on the research findings, generate comprehensive application documentation following the TechOps template structure.
+    PHASE 2: DOCUMENTATION COMPILATION AND ASSEMBLY
     
-    Use the information gathered from the RAG searches and clearly indicate where user input is needed for missing information.
+    Using the analysis from Phase 1 and collecting any missing information from the user, compile the complete
+    EU AI Act compliant documentation for "{application_name}".
     
-    The documentation should include all sections from the TechOps Application Documentation Template:
-    - Key Links
-    - General Information (with EU AI Act compliance references)
-    - Risk Classification
-    - Application Functionality  
-    - Models and Datasets
-    - Deployment
-    - Integration with External Systems
-    - Deployment Plan
-    - Lifecycle Management
-    - Risk Management System
-    - Testing and Validation (Accuracy, Robustness, Cybersecurity)
-    - Human Oversight
-    - Incident Management
-    - Documentation Metadata
+    **DOCUMENTATION STRUCTURE TO FOLLOW:**
     
-    For sections where information is missing, include placeholders with clear instructions on what information
-    is needed from the user.
+    1. **Application Documentation Template** (Header section)
+       - Application Owner (Name, Email, Phone, Department)
+       - Document Version (Version, Last Updated, Change Log)
+       - Reviewers (Technical, Legal, Security, Business)
+    
+    2. **Key Links**
+       - Code Repository (GitHub URL, Branch, Access)
+       - Deployment Pipeline (CI/CD Platform, Pipeline URL, Environment)
+       - API Documentation (Swagger Docs, API Version, Authentication)
+       - Cloud Account (Provider, Subscription, Resource Group, Region)
+       - Project Management Board (Platform, Board URL, Epic)
+       - Application Architecture (Diagram, Technology Stack, Deployment Model)
+    
+    3. **Purpose and Intended Use**
+       - AI System Purpose Description
+       - Problem the AI Application Aims to Solve
+       - Target Users and Stakeholders
+       - Measurable Goals and KPIs
+       - Ethical Considerations and Regulatory Constraints
+       - Clear Statement on Prohibited Uses
+       - Operational Environment
+    
+    4. **EU AI Act Risk Classification**
+       - Risk classification with detailed justification
+       - Required compliance measures
+       - Excluded high-risk categories
+    
+    5. **Application Functionality**
+       - Instructions for Use for Deployers (EU AI Act Article 13)
+       - Model Capabilities and Limitations
+       - Input Data Requirements and Examples
+       - Output Explanation and Interpretation
+       - System Architecture Overview
+    
+    6. **Models and Datasets**
+       - Complete model documentation table
+       - Dataset documentation table
+       - Links to Single Source of Truth for each
+    
+    7. **Deployment**
+       - Infrastructure and Environment Details
+       - Integration with External Systems
+       - Deployment Plan
+    
+    8. **Lifecycle Management**
+       - Monitoring Procedures
+       - Metrics and KPIs
+       - Key Activities
+       - Documentation Requirements
+    
+    9. **Risk Management System**
+       - Risk Assessment Methodology
+       - Identified Risks
+       - Risk Mitigation Measures
+    
+    10. **Testing and Validation**
+        - Accuracy Testing
+        - Data Quality and Management
+        - Robustness Measures
+        - Cybersecurity
+    
+    11. **Human Oversight**
+        - Human-in-the-Loop Mechanisms
+        - Override and Intervention Procedures
+        - User Instructions and Training
+        - System Limitations and Constraints
+    
+    12. **Incident Management**
+        - Common Issues and Solutions
+        - Support Contact
+    
+    13. **EU Declaration of Conformity**
+        - Standards Applied
+        - Documentation Metadata
+    
+    **COMPILATION INSTRUCTIONS:**
+    
+    1. **Use RAG Information**: Integrate all information found through RAG search
+    2. **Collect Missing Information**: Use the user input tools to gather required details
+    3. **Maintain Template Structure**: Follow the exact structure and formatting of the template
+    4. **Ensure Completeness**: Every section must be populated or marked as requiring additional input
+    5. **Professional Formatting**: Use proper Markdown formatting with tables, headers, and lists
+    6. **Compliance Focus**: Ensure all EU AI Act requirements are addressed
+    
+    **FOR MISSING INFORMATION:**
+    - Use collect_missing_information tool to gather user input
+    - If user doesn't provide information, create clear placeholders like [INFORMATION NEEDED: specific instruction]
+    - Maintain professional document flow even with placeholders
     
     Application name: {application_name}
     
   expected_output: >
-    A complete application documentation document in markdown format following the TechOps template structure.
-    The document should:
-    - Include all required sections with appropriate EU AI Act references
-    - Populate sections with information found through RAG search
-    - Clearly mark sections that need user input with specific questions
-    - Follow proper markdown formatting
-    - Be ready for user review and completion
-  agent: documentation_generator
+    A complete, professional EU AI Act compliant documentation document in markdown format that includes:
+    - All required sections properly populated with available information
+    - User-provided information seamlessly integrated
+    - Clear placeholders for any remaining missing information
+    - Professional formatting matching the template structure
+    - Complete compliance with EU AI Act documentation requirements
+    - Ready-to-use documentation that follows the exact template format
+  agent: documentation_compiler
   context:
-    - research_documentation_task
+    - analyze_and_generate_questions_task

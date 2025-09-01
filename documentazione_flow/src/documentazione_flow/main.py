@@ -25,9 +25,7 @@ class DocumentationFlow(Flow[DocumentationState]):
         print(f"🚀 Avvio generazione documentazione per {self.state.application_name}")
         
         result = (
-            RagCrew()
-            .crew()
-            .kickoff(inputs={"application_name": self.state.application_name})
+            RagCrew().crew().kickoff(inputs={"application_name": self.state.application_name})
         )
 
         print("✅ Documentazione generata!")
@@ -42,13 +40,13 @@ class DocumentationFlow(Flow[DocumentationState]):
         print(f"📄 Documentazione salvata in: {filename}")
 
 
-def kickoff_documentation():
+def kickoff():
     """Avvia il flow per la generazione della documentazione"""
     doc_flow = DocumentationFlow()
     doc_flow.kickoff()
 
 
-def plot_documentation():
+def plot():
     """Mostra il diagramma del flow di documentazione"""
     doc_flow = DocumentationFlow()
     doc_flow.plot()
@@ -57,4 +55,5 @@ def plot_documentation():
 if __name__ == "__main__":
     print("📝 SISTEMA DI GENERAZIONE DOCUMENTAZIONE AI")
     print("=" * 50)
-    kickoff_documentation()
+    plot()
+    kickoff()

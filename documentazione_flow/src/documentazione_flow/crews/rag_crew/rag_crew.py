@@ -3,7 +3,18 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 from documentazione_flow.tools.rag_tool import search_rag
-from documentazione_flow.tools.user_input_tool import request_user_input, collect_missing_information
+from documentazione_flow.tools.user_input_tool import (
+    request_user_input, 
+    collect_missing_information, 
+    collect_section_information, 
+    reset_user_input_session,
+    get_session_summary
+)
+from documentazione_flow.tools.documentation_analyzer_tool import (
+    analyze_template_sections, 
+    generate_targeted_questions, 
+    validate_documentation_completeness
+)
 
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -21,18 +32,25 @@ class RagCrew():
     # Tasks: https://docs.crewai.com/concepts/tasks#yaml-configuration-recommended
     
     @agent
-    def documentation_researcher(self) -> Agent:
+    def documentation_question_generator(self) -> Agent:
         return Agent(
-            config=self.agents_config['documentation_researcher'], # type: ignore[index]
-            tools=[search_rag],
+            config=self.agents_config['documentation_question_generator'], # type: ignore[index]
+            tools=[search_rag, analyze_template_sections, generate_targeted_questions],
             verbose=True
         )
 
     @agent
-    def documentation_generator(self) -> Agent:
+    def documentation_compiler(self) -> Agent:
         return Agent(
-            config=self.agents_config['documentation_generator'], # type: ignore[index]
-            tools=[request_user_input, collect_missing_information],
+            config=self.agents_config['documentation_compiler'], # type: ignore[index]
+            tools=[
+                request_user_input, 
+                collect_missing_information, 
+                collect_section_information, 
+                validate_documentation_completeness,
+                reset_user_input_session,
+                get_session_summary
+            ],
             verbose=True
         )
 
@@ -40,15 +58,15 @@ class RagCrew():
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
     @task
-    def research_documentation_task(self) -> Task:
+    def analyze_and_generate_questions_task(self) -> Task:
         return Task(
-            config=self.tasks_config['research_documentation_task'], # type: ignore[index]
+            config=self.tasks_config['analyze_and_generate_questions_task'], # type: ignore[index]
         )
 
     @task
-    def generate_documentation_task(self) -> Task:
+    def compile_complete_documentation_task(self) -> Task:
         return Task(
-            config=self.tasks_config['generate_documentation_task'], # type: ignore[index]
+            config=self.tasks_config['compile_complete_documentation_task'], # type: ignore[index]
             output_file='application_documentation.md'
         )
 

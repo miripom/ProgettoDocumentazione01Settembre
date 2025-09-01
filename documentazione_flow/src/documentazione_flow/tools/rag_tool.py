@@ -79,8 +79,8 @@ class RAGSystem:
         
         for html_file in html_files:
             try:
-                # Usa BSHTMLLoader per caricare e parsare l'HTML
-                loader = BSHTMLLoader(str(html_file))
+                # Usa BSHTMLLoader con encoding UTF-8 per caricare e parsare l'HTML
+                loader = BSHTMLLoader(str(html_file), open_encoding='utf-8')
                 loaded_docs = loader.load()
                 
                 # Aggiungi metadata personalizzati
@@ -97,6 +97,28 @@ class RAGSystem:
                 
                 print(f"✅ Caricato: {html_file.name} ({len(split_docs)} chunks)")
                 
+            except UnicodeDecodeError as e:
+                print(f"❌ Errore di encoding per {html_file.name}: {str(e)}")
+                # Prova con encoding alternativo
+                try:
+                    loader = BSHTMLLoader(str(html_file), open_encoding='latin-1')
+                    loaded_docs = loader.load()
+                    
+                    for doc in loaded_docs:
+                        doc.metadata.update({
+                            "source": html_file.name,
+                            "file_type": "html",
+                            "category": "documentation"
+                        })
+                    
+                    split_docs = text_splitter.split_documents(loaded_docs)
+                    documents.extend(split_docs)
+                    
+                    print(f"✅ Caricato con latin-1: {html_file.name} ({len(split_docs)} chunks)")
+                    
+                except Exception as fallback_e:
+                    print(f"❌ Impossibile caricare {html_file.name}: {str(fallback_e)}")
+                    continue
             except Exception as e:
                 print(f"❌ Errore nel caricamento di {html_file.name}: {str(e)}")
                 continue

@@ -1,53 +1,60 @@
-#!/usr/bin/env python
-from random import randint
-
 from pydantic import BaseModel
 
 from crewai.flow import Flow, listen, start
 
-from documentazione_flow.crews.poem_crew.poem_crew import PoemCrew
+from documentazione_flow.crews.rag_crew.rag_crew import RagCrew
 
 
-class PoemState(BaseModel):
-    sentence_count: int = 1
-    poem: str = ""
+class DocumentationState(BaseModel):
+    application_name: str = ""
+    documentation: str = ""
 
 
-class PoemFlow(Flow[PoemState]):
-
+class DocumentationFlow(Flow[DocumentationState]):
+    
     @start()
-    def generate_sentence_count(self):
-        print("Generating sentence count")
-        self.state.sentence_count = randint(1, 5)
+    def setup_application_name(self):
+        print("📝 GENERAZIONE DOCUMENTAZIONE APPLICAZIONE")
+        print("=" * 50)
+        application_name = input("Inserisci il nome dell'applicazione da documentare: ")
+        self.state.application_name = application_name or "MiaApplicazioneAI"
+        print(f"🎯 Generazione documentazione per: {self.state.application_name}")
 
-    @listen(generate_sentence_count)
-    def generate_poem(self):
-        print("Generating poem")
+    @listen(setup_application_name)
+    def generate_documentation(self):
+        print(f"🚀 Avvio generazione documentazione per {self.state.application_name}")
+        
         result = (
-            PoemCrew()
+            RagCrew()
             .crew()
-            .kickoff(inputs={"sentence_count": self.state.sentence_count})
+            .kickoff(inputs={"application_name": self.state.application_name})
         )
 
-        print("Poem generated", result.raw)
-        self.state.poem = result.raw
+        print("✅ Documentazione generata!")
+        self.state.documentation = result.raw
 
-    @listen(generate_poem)
-    def save_poem(self):
-        print("Saving poem")
-        with open("poem.txt", "w") as f:
-            f.write(self.state.poem)
-
-
-def kickoff():
-    poem_flow = PoemFlow()
-    poem_flow.kickoff()
+    @listen(generate_documentation)
+    def save_documentation(self):
+        print("💾 Salvataggio documentazione...")
+        filename = f"{self.state.application_name.lower().replace(' ', '_')}_documentation.md"
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(self.state.documentation)
+        print(f"📄 Documentazione salvata in: {filename}")
 
 
-def plot():
-    poem_flow = PoemFlow()
-    poem_flow.plot()
+def kickoff_documentation():
+    """Avvia il flow per la generazione della documentazione"""
+    doc_flow = DocumentationFlow()
+    doc_flow.kickoff()
+
+
+def plot_documentation():
+    """Mostra il diagramma del flow di documentazione"""
+    doc_flow = DocumentationFlow()
+    doc_flow.plot()
 
 
 if __name__ == "__main__":
-    kickoff()
+    print("📝 SISTEMA DI GENERAZIONE DOCUMENTAZIONE AI")
+    print("=" * 50)
+    kickoff_documentation()

@@ -1,17 +1,66 @@
-research_task:
+research_documentation_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Research the following documentation template sections using the RAG tool to extract information from existing documentation:
+    
+    1. Key Links (code repository, deployment pipeline, API docs, cloud account, etc.)
+    2. General Information (purpose, intended use, target users, KPIs, prohibited uses)
+    3. Risk Classification (High/Limited/Minimal risk according to EU AI Act)
+    4. Application Functionality (model capabilities, limitations, input/output requirements, system architecture)
+    5. Models and Datasets (integrated models and datasets with documentation links)
+    6. Deployment (infrastructure, environment details, integration with external systems)
+    7. Lifecycle Management (monitoring procedures, versioning, risk management)
+    8. Testing and Validation (accuracy, robustness, cybersecurity measures)
+    9. Human Oversight (human-in-the-loop mechanisms, override procedures)
+    10. Incident Management (troubleshooting, common issues, support contacts)
+    
+    For each section, use the search_rag tool to find relevant information. Document what information was found
+    and what information is missing and needs to be requested from the user.
+    
+    Application name: {application_name}
+    
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A comprehensive research report with:
+    - Information found for each documentation section from RAG search
+    - Clear identification of missing information that needs user input
+    - Structured findings organized by documentation template sections
+    - Specific questions to ask the user for missing information
+  agent: documentation_researcher
 
-reporting_task:
+generate_documentation_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Based on the research findings, generate comprehensive application documentation following the TechOps template structure.
+    
+    Use the information gathered from the RAG searches and clearly indicate where user input is needed for missing information.
+    
+    The documentation should include all sections from the TechOps Application Documentation Template:
+    - Key Links
+    - General Information (with EU AI Act compliance references)
+    - Risk Classification
+    - Application Functionality  
+    - Models and Datasets
+    - Deployment
+    - Integration with External Systems
+    - Deployment Plan
+    - Lifecycle Management
+    - Risk Management System
+    - Testing and Validation (Accuracy, Robustness, Cybersecurity)
+    - Human Oversight
+    - Incident Management
+    - Documentation Metadata
+    
+    For sections where information is missing, include placeholders with clear instructions on what information
+    is needed from the user.
+    
+    Application name: {application_name}
+    
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A complete application documentation document in markdown format following the TechOps template structure.
+    The document should:
+    - Include all required sections with appropriate EU AI Act references
+    - Populate sections with information found through RAG search
+    - Clearly mark sections that need user input with specific questions
+    - Follow proper markdown formatting
+    - Be ready for user review and completion
+  agent: documentation_generator
+  context:
+    - research_documentation_task

@@ -204,17 +204,37 @@ def generate_targeted_questions(section_name: str, rag_findings: str) -> str:
     
     section_questions = {
         "Application Documentation Template": [
-            "Qual è il nome completo, email, telefono e dipartimento del proprietario dell'applicazione?",
-            "Qual è la versione corrente del documento e la data dell'ultimo aggiornamento?",
-            "Chi sono i revisori tecnici, legali, di sicurezza e business di questa applicazione?"
+            "Qual è il nome completo del proprietario dell'applicazione?",
+            "Qual è l'indirizzo email del proprietario dell'applicazione?",
+            "Qual è il numero di telefono del proprietario dell'applicazione?",
+            "Qual è il dipartimento/organizzazione responsabile dell'applicazione?",
+            "Qual è il numero di versione corrente del documento?",
+            "Qual è la data dell'ultimo aggiornamento della documentazione?",
+            "Quali modifiche sono state apportate in questa versione (change log)?",
+            "Chi è il revisore tecnico per questa applicazione?",
+            "Chi è il revisore legale/compliance?",
+            "Chi è il revisore di sicurezza?",
+            "Chi è lo stakeholder business che rivede l'applicazione?"
         ],
         "Key Links": [
-            "Qual è l'URL esatto del repository GitHub e il branch principale?",
-            "Qual è la piattaforma CI/CD utilizzata e l'URL della pipeline?",
-            "Dove si trova la documentazione API (URL Swagger) e qual è la versione API?",
-            "Qual è il provider cloud, l'ID subscription, il resource group e la regione?",
-            "Qual è la piattaforma di project management e l'URL del board?",
-            "Dove si trova il diagramma dell'architettura applicativa?"
+            "Qual è l'URL completo del repository GitHub?",
+            "Qual è il nome del branch principale utilizzato?",
+            "Quali sono i permessi di accesso al repository?",
+            "Quale piattaforma CI/CD viene utilizzata (GitHub Actions, Azure DevOps, etc.)?",
+            "Qual è l'URL della pipeline di deployment?",
+            "Quali ambienti di deployment sono configurati (dev, staging, prod)?",
+            "Dove si trova la documentazione API (URL Swagger)?",
+            "Qual è la versione corrente dell'API?",
+            "Quali metodi di autenticazione sono utilizzati per l'API?",
+            "Qual è l'ID subscription Azure o i dettagli dell'account cloud?",
+            "Qual è il nome del resource group?",
+            "Quale regione Azure viene utilizzata?",
+            "Quale piattaforma di project management è utilizzata (Jira, Azure DevOps, etc.)?",
+            "Qual è l'URL del project board?",
+            "Qual è il nome dell'epic per questo progetto?",
+            "Dove si trova il diagramma dell'architettura applicativa?",
+            "Qual è il technology stack completo?",
+            "Quale modello di deployment viene utilizzato?"
         ],
         "Purpose and Intended Use": [
             "Qual è lo scopo specifico di questo sistema di intelligenza artificiale?",
@@ -227,32 +247,34 @@ def generate_targeted_questions(section_name: str, rag_findings: str) -> str:
         ],
         "EU AI Act Risk Classification": [
             "Qual è la classificazione di rischio secondo l'EU AI Act (Alto/Limitato/Minimo)?",
-            "Quali misure di compliance specifiche sono state implementate?",
+            "Qual è la giustificazione per questa classificazione di rischio?",
+            "Quali misure di compliance specifiche sono richieste?",
             "Quali categorie ad alto rischio sono state escluse e perché?"
         ],
         "Application Functionality": [
             "Cosa può fare specificamente questo modello AI? Elencare le capacità dettagliate.",
             "Cosa NON può fare questo modello? Elencare le limitazioni specifiche.",
             "Quali formati di dati di input sono supportati? Fornire esempi specifici.",
+            "Quali sono esempi di input validi?",
             "Come devono essere interpretati gli output del sistema?",
             "Qual è l'architettura dettagliata del sistema con componenti specifici?"
         ],
         "Models and Datasets": [
             "Quali modelli AI specifici sono utilizzati (nomi, versioni, provider)?",
+            "Dove si trova la documentazione per ciascun modello?",
             "Quali dataset sono utilizzati per training e valutazione?",
-            "Dove si trova la documentazione completa per ogni modello?",
-            "Dove si trova la documentazione completa per ogni dataset?"
+            "Dove si trova la documentazione per ciascun dataset?"
         ],
         "Deployment": [
-            "Qual è l'infrastruttura di deployment specifica (VM, container, etc.)?",
+            "Qual è la configurazione dell'infrastruttura (VM, container, etc.)?",
             "Quali servizi cloud specifici sono utilizzati?",
             "Quali sistemi esterni sono integrati e come?",
             "Quali sono gli endpoint API specifici e i metodi di autenticazione?",
             "Qual è la strategia di deployment e rollback dettagliata?"
         ],
         "Lifecycle Management": [
-            "Quali procedure di monitoraggio in tempo reale sono implementate?",
-            "Quali metriche di performance specifiche sono tracciate e con che soglie?",
+            "Quali procedure di monitoraggio sono implementate?",
+            "Quali metriche di performance specifiche sono tracciate?",
             "Come è gestito il versioning e il change management?",
             "Quali sono le procedure specifiche di update e manutenzione?"
         ],
@@ -263,7 +285,8 @@ def generate_targeted_questions(section_name: str, rag_findings: str) -> str:
             "Quali misure preventive e protettive sono in atto?"
         ],
         "Testing and Validation": [
-            "Quali test di accuratezza sono stati eseguiti con risultati specifici?",
+            "Quali test di accuratezza sono stati eseguiti?",
+            "Quali sono le metriche di accuratezza specifiche e i risultati?",
             "Quali procedure di data quality sono implementate?",
             "Quali test di robustezza (adversarial, stress) sono stati condotti?",
             "Quali misure di cybersecurity specifiche sono implementate?"
@@ -279,6 +302,10 @@ def generate_targeted_questions(section_name: str, rag_findings: str) -> str:
             "Quali procedure di troubleshooting sono documentate?",
             "Quali sono i contatti di supporto specifici?",
             "Quali sono le procedure di escalation definite?"
+        ],
+        "EU Declaration of Conformity": [
+            "Quali standard sono applicati per la compliance?",
+            "Quali metadati della documentazione sono richiesti?"
         ]
     }
     

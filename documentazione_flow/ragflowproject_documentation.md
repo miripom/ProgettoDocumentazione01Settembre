@@ -1,160 +1,148 @@
-# EU AI Act Compliant Documentation for "ragFlowProject"
+# EU AI Act Compliant Documentation for ragFlowProject
 
-## 1. Application Documentation Template 
-
-### Application Owner
-- **Name**: [INFORMATION NEEDED: Please provide the name of the application owner.]
-- **Email**: [INFORMATION NEEDED: Provide the email address of the application owner.]
-- **Phone**: [INFORMATION NEEDED: Provide the phone number of the application owner.]
-- **Department**: [INFORMATION NEEDED: Provide the department responsible for this application.]
-
-### Document Version
-- **Version**: [INFORMATION NEEDED: Specify the current version number of this document.]
-- **Last Updated**: [INFORMATION NEEDED: Include the date of the last update.]
-- **Change Log**: [INFORMATION NEEDED: Summarize changes in this version.]
-
-### Reviewers
-- **Technical**: [INFORMATION NEEDED: Provide the name(s) of technical reviewers.]
-- **Legal**: [INFORMATION NEEDED: Provide the name(s) of legal reviewers.]
-- **Security**: [INFORMATION NEEDED: Provide the name(s) of security reviewers.]
-- **Business**: [INFORMATION NEEDED: Provide the name(s) of business reviewers.]
+## 1. Application Documentation Template
+| **Field**               | **Details**           |
+|--------------------------|-----------------------|
+| Application Owner        | Miriana              |
+| Email                   | email@email.om        |
+| Phone Number            | 123456               |
+| Department              | boh                  |
+| Document Version        | 1.00                 |
+| Last Updated            | 01 Sept              |
+| Change Log              | change               |
+| Technical Reviewer      | ddd                  |
+| Legal Reviewer          | kp                   |
+| Security Reviewer       | dkkd                 |
+| Business Stakeholder Reviewer | snffs         |
 
 ---
 
 ## 2. Key Links
-
-### Code Repository
-- **GitHub URL**: [INFORMATION NEEDED: Provide the repository URL.]
-- **Branch**: [INFORMATION NEEDED: Specify the branch in use.]
-- **Access**: [INFORMATION NEEDED: Define access permissions to the repo.]
-
-### Deployment Pipeline
-- **CI/CD Platform**: [INFORMATION NEEDED: Specify the CI/CD platform.]
-- **Pipeline URL**: [INFORMATION NEEDED: Provide the URL of the pipeline.]
-- **Environment**: [INFORMATION NEEDED: Specify the deployment environment.]
-
-### API Documentation
-- **Swagger Docs**: [INFORMATION NEEDED: Provide the documentation link.]
-- **API Version**: [INFORMATION NEEDED: Specify the API's version.]
-- **Authentication**: [INFORMATION NEEDED: Describe the authentication methods used.]
-
-### Cloud Account
-- **Provider**: Azure
-- **Subscription**: [INFORMATION NEEDED: Specify the subscription details.]
-- **Resource Group**: [INFORMATION NEEDED: Provide the resource group details.]
-- **Region**: [INFORMATION NEEDED: Mention the region of deployment.]
-
-### Project Management Board
-- **Platform**: [INFORMATION NEEDED: Specify the project management tool.]
-- **Board URL**: [INFORMATION NEEDED: Provide the URL to the board.]
-- **Epic**: [INFORMATION NEEDED: Specify the epic related to this project.]
-
-### Application Architecture
-- **Diagram**: [INFORMATION NEEDED: Provide visual representations if available.]
-- **Technology Stack**: Details are missing. User provided "Azure" but no further technologies. Clarification needed.
-- **Deployment Model**: "ABC"
+| **Link Type**            | **Details**          |
+|--------------------------|-----------------------|
+| GitHub Repository URL    | fff                  |
+| Main Branch              | dd                   |
+| Repository Access        | eee                  |
+| CI/CD Platform           | ff                   |
+| Deployment Pipeline URL  | fs                   |
+| Deployment Environments  | s                    |
+| API Documentation        | ss                   |
+| API Version              | f                    |
+| Authentication Methods   | d                    |
+| Azure Subscription ID    | s                    |
+| Resource Group Name      | **[VUOTO]**          |
+| Azure Region             | s                    |
+| Project Management Platform | fsfg              |
+| Project Board URL        | dd                   |
+| Epic Name                | ddg                  |
+| Application Architecture Diagram | ss         |
+| Technology Stack         | sr                   |
+| Deployment Model         | ss                   |
 
 ---
 
 ## 3. Purpose and Intended Use
-
-- **AI System Purpose Description**: [INFORMATION NEEDED: Describe the purpose of the AI system.]
-- **Problem the AI Application Aims to Solve**: [INFORMATION NEEDED: Provide a detailed explanation.]
-- **Target Users and Stakeholders**: [INFORMATION NEEDED: Define the user and stakeholder groups.]
-- **Measurable Goals and KPIs**: [INFORMATION NEEDED: List measurable performance goals and KPIs.]
-- **Ethical Considerations and Regulatory Constraints**: [INFORMATION NEEDED: Summarize ethical considerations.]
-- **Clear Statement on Prohibited Uses**: "sss"
-- **Operational Environment**: [INFORMATION NEEDED: Describe the operational environment.]
+- **AI System Purpose Description:** ddd
+- **Problem the AI Application Aims to Solve:** fff
+- **Target Users and Stakeholders:** ee
+- **Measurable Goals and KPIs:** ww
+- **Ethical Considerations:** ee
+- **Prohibited Uses:** rr
+- **Operational Environment:** rr
 
 ---
 
 ## 4. EU AI Act Risk Classification
-
-- **Risk Classification**: "si". However, justification details are missing.
-- **Required Compliance Measures**: [INFORMATION NEEDED: Identify compliance measures in place.]
-- **Excluded High-Risk Categories**: [INFORMATION NEEDED: Clarify excluded categories.]
+- **Risk Classification:** fsf
+- **Justification:** ss
+- **Compliance Measures:** aa
+- **Excluded High-Risk Categories:** dd
 
 ---
 
 ## 5. Application Functionality
-
-- **Instructions for Use for Deployers (EU AI Act Article 13)**: [INFORMATION NEEDED: Provide detailed instructions.]
-- **Model Capabilities and Limitations**: [INFORMATION NEEDED: Explain capabilities and limitations.]
-- **Input Data Requirements and Examples**: [INFORMATION NEEDED: Specify data formats and examples.]
-- **Output Explanation and Interpretation**: [INFORMATION NEEDED: Describe system outputs.]
-- **System Architecture Overview**: Azure [Details are incomplete.]
+- **Capabilities:** cc
+- **Limitations:** **[VUOTO]**
+- **Input Data Requirements/Formats:** cc
+- **Examples of Valid Inputs:** dds
+- **Output Explanation:** aa
+- **System Architecture Overview:** aaaaaa
 
 ---
 
 ## 6. Models and Datasets
-
-| Model Name | Version | Provider | Documentation Links |
-|------------|---------|----------|----------------------|
-| "modelli"  | [INFORMATION NEEDED] | [INFORMATION NEEDED] | "dldlld" |
-
-| Dataset Name | Use Case | Documentation Links |
-|--------------|----------|----------------------|
-| "rag"         | Training/Evaluation | "dldlld" |
-
-[INFORMATION NEEDED: Add details about additional models and datasets, if applicable.]
+| **Field**               | **Details**           |
+|--------------------------|-----------------------|
+| AI Models Used          | dddd                 |
+| Model Documentation     | dd                   |
+| Datasets Used           | ee                   |
+| Dataset Documentation   | ww                   |
 
 ---
 
 ## 7. Deployment
-
-- **Infrastructure and Environment Details**: VM [Details incomplete.]
-- **Integration with External Systems**: [INFORMATION NEEDED: Describe integration points.]
-- **Deployment Plan**: [INFORMATION NEEDED: Elaborate on the deployment plan.]
+- **Infrastructure Setup:** sss
+- **Cloud Services:** uu
+- **External Systems Integrated:** jj
+- **API Endpoints Methods:** jj
+- **Deployment and Rollback Strategy:** **[VUOTO]**
 
 ---
 
 ## 8. Lifecycle Management
-
-- **Monitoring Procedures**: [INFORMATION NEEDED: Describe active monitoring systems.]
-- **Metrics and KPIs**: [INFORMATION NEEDED: List of metrics monitored.]
-- **Key Activities**: [INFORMATION NEEDED: Mention regular activities.]
-- **Documentation Requirements**: [INFORMATION NEEDED: List required documentation.]
+- **Monitoring Procedures:** **[VUOTO]**
+- **Performance Metrics:** gggg
+- **Version and Change Management:** dd
+- **Update and Maintenance Procedures:** **[VUOTO]**
 
 ---
 
 ## 9. Risk Management System
-
-- **Risk Assessment Methodology**: "hiogh risk"
-- **Identified Risks**: "rischi medi"
-- **Risk Mitigation Measures**: "no"
+- **Risk Assessment Methodology:** **[VUOTO]**
+- **Specific Risks Identified:** dd
+- **Risk Mitigation Measures:** aaa
+- **Preventive/Protective Measures:** xx 
 
 ---
 
 ## 10. Testing and Validation
-
-- **Accuracy Testing**: "sis"
-- **Data Quality and Management**: [INFORMATION NEEDED: Clarify procedures.]
-- **Robustness Measures**: [INFORMATION NEEDED: Specify adversarial or stress testing protocols.]
-- **Cybersecurity**: "boh"
+- **Accuracy Testing:** dddd
+- **Accuracy Metrics/Results:** sss
+- **Data Quality Procedures:** aa
+- **Robustness Testing:** zz
+- **Cybersecurity Measures:** zz
 
 ---
 
 ## 11. Human Oversight
-
-- **Human-in-the-Loop Mechanisms**: "no"
-- **Override and Intervention Procedures**: "no"
-- **User Instructions and Training**: "si"
-- **System Limitations and Constraints**: [INFORMATION NEEDED: Summarize constraints.]
+- **Human-in-the-Loop Mechanisms:** kkk
+- **Override Procedures:** ll
+- **User Training/Instructions:** uu
+- **System Limitations & Constraints:** jj
 
 ---
 
 ## 12. Incident Management
-
-- **Common Issues and Solutions**: "no"
-- **Support Contact**: [INFORMATION NEEDED: Provide support contact details.]
+- **Common Issues Identified:** jjjjjj
+- **Troubleshooting Procedures:** yyyyyyy
+- **Support Contact Details:** uuuuuuu
+- **Escalation Procedures:** iiiiii
 
 ---
 
 ## 13. EU Declaration of Conformity
-
-- **Standards Applied**: [INFORMATION NEEDED: Specify relevant standards.]
-- **Documentation Metadata**: [INFORMATION NEEDED: Metadata details.]
+- **Standards Applied:** kkkk
+- **Documentation Metadata:** uuu
 
 ---
 
-[INFORMATION NEEDED: Continue refining placeholders with missing details as provided by relevant stakeholders.]
+## Notes
+Some fields are marked **[VUOTO]** indicating missing data requiring further input:
+- Resource Group Name in Key Links
+- Model Limitations in Application Functionality
+- Deployment and Rollback Strategy in Deployment
+- Monitoring Procedures and Update/Maintenance in Lifecycle Management
+- Risk Assessment Methodology in Risk Management System
+```
+
+This document follows the EU AI Act template structure and integrates user-provided information, marking areas needing completion where appropriate.

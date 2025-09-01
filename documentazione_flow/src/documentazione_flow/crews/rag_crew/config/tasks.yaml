@@ -7,7 +7,10 @@ analyze_and_generate_questions_task:
     
     For the application "{application_name}", perform the following systematic analysis:
     
-    1. **RAG INFORMATION EXTRACTION** - Search for information in these specific areas:
+    1. **RAG INFORMATION EXTRACTION** - Search for information in ALL areas including:
+       - Application owner and contact information: "Who is the application owner? What are their contact details?"
+       - Document versioning and reviewers: "What is the document version? Who are the reviewers?"
+       - Repository and deployment links: "What is the GitHub repository? What are the deployment links?"
        - Architecture and technical specifications: "What is the system architecture? What technologies are used?"
        - Models and algorithms: "What AI models are implemented? What datasets are used?"
        - Deployment and infrastructure: "How is the system deployed? What cloud services are used?"
@@ -21,31 +24,111 @@ analyze_and_generate_questions_task:
        - What critical details are missing
        - What user input is required
     
-    3. **TARGETED QUESTION GENERATION** - Create specific, detailed questions for missing information:
+    3. **TARGETED QUESTION GENERATION** - Create specific, detailed questions for ALL missing information:
        
-       **Application Owner Details:**
-       - "What is the full name and contact details of the application owner?"
+       **1. Application Documentation Template:**
+       - "What is the full name of the application owner?"
+       - "What is the email address of the application owner?"
+       - "What is the phone number of the application owner?"
        - "What department/organization owns this application?"
+       - "What is the current document version number?"
+       - "What is the last updated date for this documentation?"
+       - "What changes were made in this version (change log)?"
+       - "Who is the technical reviewer for this application?"
+       - "Who is the legal/compliance reviewer?"
+       - "Who is the security reviewer?"
+       - "Who is the business stakeholder reviewer?"
        
-       **Technical Architecture:**
-       - "What specific cloud provider and services are used (Azure, AWS, GCP)?"
-       - "What are the exact model names and versions being used?"
+       **2. Key Links:**
+       - "What is the complete GitHub repository URL?"
+       - "What is the main branch name being used?"
+       - "What are the repository access permissions?"
+       - "What CI/CD platform is being used (GitHub Actions, Azure DevOps, etc.)?"
+       - "What is the deployment pipeline URL?"
+       - "What deployment environments are configured (dev, staging, prod)?"
+       - "Where is the API documentation located (Swagger URL)?"
+       - "What is the current API version?"
+       - "What authentication methods are used for the API?"
+       - "What is the Azure subscription ID or cloud account details?"
+       - "What is the resource group name?"
+       - "What Azure region is being used?"
+       - "What project management platform is used (Jira, Azure DevOps, etc.)?"
+       - "What is the project board URL?"
+       - "What is the epic name for this project?"
+       - "Where is the application architecture diagram located?"
+       - "What is the complete technology stack?"
+       - "What deployment model is used?"
+       
+       **3. Purpose and Intended Use:**
+       - "What is the specific purpose of this AI system?"
+       - "What problem does this AI application solve?"
+       - "Who are the target users and stakeholders?"
+       - "What are the measurable goals and KPIs?"
+       - "What ethical considerations have been identified?"
+       - "What are the prohibited uses of this system?"
+       - "What is the operational environment?"
+       
+       **4. EU AI Act Risk Classification:**
+       - "What is the EU AI Act risk classification (High/Limited/Minimal)?"
+       - "What is the justification for this risk classification?"
+       - "What compliance measures are required?"
+       - "What high-risk categories are excluded?"
+       
+       **5. Application Functionality:**
+       - "What can the AI model do (capabilities)?"
+       - "What cannot the AI model do (limitations)?"
+       - "What input data formats are supported?"
+       - "What are examples of valid inputs?"
+       - "How should the system outputs be interpreted?"
+       - "What is the detailed system architecture?"
+       
+       **6. Models and Datasets:**
+       - "What AI models are used (names, versions, providers)?"
+       - "Where is the documentation for each model?"
+       - "What datasets are used for training and evaluation?"
+       - "Where is the documentation for each dataset?"
+       
+       **7. Deployment:**
+       - "What is the infrastructure setup (VMs, containers, etc.)?"
+       - "What cloud services are specifically used?"
+       - "What external systems are integrated?"
        - "What are the API endpoints and authentication methods?"
+       - "What is the deployment and rollback strategy?"
        
-       **Compliance and Legal:**
-       - "What specific EU AI Act risk classification applies to this system?"
-       - "What prohibited uses have been identified for this system?"
-       - "What compliance standards and certifications are required?"
+       **8. Lifecycle Management:**
+       - "What monitoring procedures are in place?"
+       - "What performance metrics are tracked?"
+       - "How is versioning and change management handled?"
+       - "What are the update and maintenance procedures?"
        
-       **Operational Details:**
-       - "What are the specific KPIs and success metrics being tracked?"
-       - "What monitoring and alerting systems are in place?"
-       - "What is the incident response procedure?"
+       **9. Risk Management:**
+       - "What risk assessment methodology is used?"
+       - "What specific risks have been identified?"
+       - "What risk mitigation measures are implemented?"
+       - "What preventive and protective measures exist?"
        
-       **Risk Management:**
-       - "What specific risks have been identified and assessed?"
-       - "What risk mitigation measures are currently implemented?"
-       - "What testing and validation procedures are in place?"
+       **10. Testing and Validation:**
+       - "What accuracy testing has been performed?"
+       - "What are the specific accuracy metrics and results?"
+       - "What data quality procedures are in place?"
+       - "What robustness testing has been conducted?"
+       - "What cybersecurity measures are implemented?"
+       
+       **11. Human Oversight:**
+       - "What human-in-the-loop mechanisms exist?"
+       - "What override and intervention procedures are available?"
+       - "What user training and instructions are provided?"
+       - "What are the system limitations and constraints?"
+       
+       **12. Incident Management:**
+       - "What common issues have been identified?"
+       - "What troubleshooting procedures exist?"
+       - "What are the support contact details?"
+       - "What escalation procedures are defined?"
+       
+       **13. EU Declaration of Conformity:**
+       - "What standards are applied for compliance?"
+       - "What documentation metadata is required?"
     
     EXPECTED OUTPUT FORMAT:
     ```
@@ -58,7 +141,7 @@ analyze_and_generate_questions_task:
     [List of missing information organized by documentation section]
     
     ## TARGETED QUESTIONS FOR USER INPUT:
-    [Organized list of specific questions grouped by documentation section]
+    [Organized list of specific questions grouped by documentation section - include ALL sections from 1-13]
     
     ## RECOMMENDED INFORMATION COLLECTION STRATEGY:
     [Priority order for collecting missing information]
@@ -170,7 +253,7 @@ compile_complete_documentation_task:
     
     **FOR MISSING INFORMATION:**
     - Use collect_missing_information tool to gather user input
-    - If user doesn't provide information, create clear placeholders like [INFORMATION NEEDED: specific instruction]
+    - Write exactly what the user provide in input
     - Maintain professional document flow even with placeholders
     
     Application name: {application_name}
